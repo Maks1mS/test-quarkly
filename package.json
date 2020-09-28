@@ -26,6 +26,7 @@
         "@quarkly/atomize": "1.0.8",
         "@quarkly/widgets": "0.2.31",
         "@quarkly/components": "0.2.31",
+        "react-scroll": "latest",
         "scroll": "latest",
         "react-dom": "^16.13.0",
         "styled-components": "^5.0.1",

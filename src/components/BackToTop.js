@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import atomize from '@quarkly/atomize';
 import { Button, Icon, Box } from "@quarkly/widgets";
 import { useOverrides } from '@quarkly/components';
+import { Link, Element } from 'react-scroll';
 import scroll from 'scroll';
 import { FaArrowUp } from "react-icons/fa";
 const defaultProps = {
 	visibilityHeight: 50
 };
+const BackToTopLink = atomize(Link)();
 const overrides = {
 	backToTopButton: {
 		props: {
@@ -53,9 +55,13 @@ const BackToTop = ({ ...props
 	}, []);
 	return <Box pos="relative" {...rest}>
 		      
-		{children}
+		<Element name="test">
+			      
+			{children}
+			      
+		</Element>
 		      
-		<Button
+		<BackToTopLink
 			d="flex"
 			p={0}
 			jc="center"
@@ -63,13 +69,14 @@ const BackToTop = ({ ...props
 			pos="absolute"
 			z={1000}
 			v={true ? 'visible' : 'hidden'}
+			to="test"
 			onClick={() => scroll.top(children, 200)}
 			{...override('backToTopButton')}
 		>
 			        
 			<Icon category="fa" icon={FaArrowUp} />
 			      
-		</Button>
+		</BackToTopLink>
 		    
 	</Box>;
 };
