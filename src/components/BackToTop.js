@@ -20,14 +20,6 @@ const overrides = {
 	}
 };
 const config = {
-	target: {
-		title: 'Target',
-		type: 'string',
-		control: 'input',
-		description: {
-			en: 'Target ID'
-		}
-	},
 	visibilityHeight: {
 		title: 'Visibility Height',
 		type: 'number',
