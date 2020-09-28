@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import atomize from '@quarkly/atomize';
 import { Button, Icon, Box } from "@quarkly/widgets";
 import { useOverrides } from '@quarkly/components';
+import scroll from 'scroll';
 import { FaArrowUp } from "react-icons/fa";
 const defaultProps = {
 	visibilityHeight: 50
@@ -47,7 +48,9 @@ const BackToTop = ({ ...props
 		}
 	};
 
-	window.addEventListener('scroll', checkScrollTop);
+	useEffect(() => {
+		window.addEventListener('scroll', checkScrollTop);
+	}, []);
 	return <Box pos="relative" {...rest}>
 		      
 		{children}
@@ -60,6 +63,7 @@ const BackToTop = ({ ...props
 			pos="absolute"
 			z={1000}
 			v={true ? 'visible' : 'hidden'}
+			onClick={() => scroll.top(children, 200)}
 			{...override('backToTopButton')}
 		>
 			        
