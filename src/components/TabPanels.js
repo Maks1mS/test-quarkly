@@ -1,30 +1,34 @@
 import React from 'react';
-import atomize from "@quarkly/atomize";
+import { Box } from '@quarkly/widgets';
+import { useOverrides } from '@quarkly/components';
+import atomize from '@quarkly/atomize';
+import { useTabs } from './Tabs';
 
-const TabPanels = ({
-	children,
-	...props
-}) => <div {...props}>
-	{children}
-</div>;
+const TabPanels = ({ ...props
+}) => {
+	const {
+		currentTabId
+	} = useTabs();
+	const {
+		children
+	} = useOverrides(props, {}); //console.log(props.children)
+	//console.log(children)
 
-const AtomizedTabPanels = atomize(TabPanels)({
-	name: "TabPanels",
-	effects: {
-		hover: ":hover"
-	},
-	normalize: true,
-	mixins: true,
-	description: {
-		// past here description for your component
-		en: "TabPanels — my awesome component"
-	},
-	propInfo: {
-		// past here props description for your component
-		yourCustomProps: {
-			control: "input"
-		}
+	let tab = React.Children.map(children, child => {
+		return child;
+	});
+	console.log(tab);
+
+	if (tab.length === 0) {
+		tab = 'Set correct tabId!';
 	}
+
+	return <Box {...props}>
+		{tab}
+	</Box>;
+};
+
+export default atomize(TabPanels)({
+	name: 'Tab',
+	description: {}
 });
-AtomizedTabPanels.tabsRole = 'TabPanels';
-export default AtomizedTabPanels;

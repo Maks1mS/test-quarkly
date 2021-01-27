@@ -1,37 +1,65 @@
-import React from 'react';
-import atomize from "@quarkly/atomize";
-import { useOverrides } from "@quarkly/components";
+import React, { useState, createContext, useContext } from 'react';
+import { Box } from '@quarkly/widgets';
+import atomize from '@quarkly/atomize';
+const TabsContext = createContext({
+	currentTabId: '',
+	setTabId: '',
+	align: 'start'
+});
+export const useTabs = () => useContext(TabsContext);
 
-const Tabs = ({ ...props
+const Tabs = ({
+	defaultTab,
+	align,
+	children,
+	...props
 }) => {
-	const {
-		children
-	} = useOverrides(props, {});
-	children.forEach(el => {
-		if (el) {
-			console.log(el.type);
-		}
-	});
-	return <div {...props}>
-		{children}
-	</div>;
+	const [currentTabId, setTabId] = useState(defaultTab);
+	const value = {
+		currentTabId,
+		setTabId,
+		align
+	};
+	return <Box {...props}>
+		      
+		<TabsContext.Provider value={value}>
+			        
+			{children}
+			      
+		</TabsContext.Provider>
+		    
+	</Box>;
 };
 
+const propInfo = {
+	defaultTab: {
+		title: 'Default Tab',
+		description: {
+			en: 'Set default tab (required)'
+		},
+		control: 'input'
+	},
+	align: {
+		title: 'Align',
+		description: {
+			en: 'Where to align'
+		},
+		control: 'select',
+		variants: ['start', 'center', 'end', 'full width']
+	}
+};
+const defaultProps = {
+	align: 'start'
+};
 export default atomize(Tabs)({
-	name: "Tabs",
+	name: 'Tabs',
 	effects: {
-		hover: ":hover"
+		hover: ':hover'
 	},
 	normalize: true,
 	mixins: true,
 	description: {
-		// past here description for your component
-		en: "Tabs — my awesome component"
+		en: 'Tabs'
 	},
-	propInfo: {
-		// past here props description for your component
-		yourCustomProps: {
-			control: "input"
-		}
-	}
-});
+	propInfo
+}, defaultProps);

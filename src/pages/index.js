@@ -1,9 +1,9 @@
 import React from "react";
 import theme from "theme";
-import { Theme, Link, Text, Box } from "@quarkly/widgets";
+import { Theme, Link, Text, Box, Button } from "@quarkly/widgets";
 import { Helmet } from "react-helmet";
 import { GlobalQuarklyPageStyles } from "global-page-styles";
-import { Override, Section } from "@quarkly/components";
+import { Override, Section, StackItem, Stack } from "@quarkly/components";
 import * as Components from "components";
 export default (() => {
 	return <Theme theme={theme}>
@@ -63,32 +63,6 @@ export default (() => {
 				</Components.Tooltip>
 			</Box>
 		</Section>
-		<Components.YandexMap
-			zoomControl
-			width="600px"
-			height="600px"
-			margin="0 auto 0 auto"
-			rulerControl
-			trafficControl
-			typeSelectorContol
-			searchControl
-			apikey="266e8312-b1db-473e-a521-20a7f4b804ec"
-			geolocationControl
-			fullscreenControl={false}
-		/>
-		<Components.YandexMap
-			zoomControl
-			width="600px"
-			height="600px"
-			margin="0 auto 0 auto"
-			rulerControl
-			trafficControl
-			typeSelectorContol
-			searchControl
-			apikey="266e8312-b1db-473e-a521-20a7f4b804ec"
-			geolocationControl
-			fullscreenControl={false}
-		/>
 		<Box display="flex" align-items="flex-start">
 			<Components.Card
 				displayMode="Horizontal"
@@ -101,6 +75,9 @@ export default (() => {
 				<Override slot="Card Title">
 					Card titl
 				</Override>
+				<Override slot="Card Button" disabled={false}>
+					Button text
+				</Override>
 			</Components.Card>
 			<Components.Card
 				displayMode="Horizontal"
@@ -111,7 +88,6 @@ export default (() => {
 			>
 				<Override slot="Card Image Horizontal" display="block" />
 				<Override slot="Card Icon AspectRatio" color="#8f3232" background="#290303" />
-				<Override slot="Card Content Horizontal" />
 				<Override slot="Card Title" font="26.6667px ">
 					Card titl
 				</Override>
@@ -121,13 +97,47 @@ export default (() => {
 				</Override>
 			</Components.Card>
 		</Box>
-		<Box display="flex" align-items="flex-start">
-			<Components.Tabs>
+		<Box>
+			<Components.Tabs defaultTab="one">
 				<Components.TabList>
-					<Components.Tab />
+					<Components.Tab tabId="one">
+						One
+					</Components.Tab>
+					<Components.Tab tabId="two">
+						Two
+					</Components.Tab>
+					<Components.Tab tabId="three">
+						Three
+					</Components.Tab>
 				</Components.TabList>
+				<Components.TabPanels>
+					<Components.TabPanel tabId="one" />
+					<Components.TabPanel tabId="two" />
+					<Components.TabPanel tabId="three" />
+				</Components.TabPanels>
 			</Components.Tabs>
+			<Stack>
+				{"    "}
+				<StackItem width="50%" display="flex">
+					{"        "}
+					<Text font="--lead" margin="0px 0px 0px 0px" display="inline-block">
+						{"            "}First Item{"\n        "}
+					</Text>
+					{"    "}
+				</StackItem>
+				{"    "}
+				<StackItem width="50%" display="flex">
+					{"        "}
+					<Text font="--lead" margin="0px 0px 0px 0px" display="inline-block">
+						{"            "}Second Item{"\n        "}
+					</Text>
+					{"    "}
+				</StackItem>
+			</Stack>
 		</Box>
+		<Button active-background="--color-red">
+			Button
+		</Button>
 		<Link
 			font={"--capture"}
 			font-size={"10px"}
