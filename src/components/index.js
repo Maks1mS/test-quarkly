@@ -1,5 +1,5 @@
-export { default as Card } from "./Card"
 export { default as Tooltip } from "./Tooltip"
+export { default as Card } from "./Card"
 export { default as Tab } from "./Tab"
 export { default as Tabs } from "./Tabs"
 export { default as TabList } from "./TabList"
