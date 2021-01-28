@@ -2,22 +2,18 @@ import React from 'react';
 import { Box } from '@quarkly/widgets';
 import { useOverrides } from '@quarkly/components';
 import atomize from '@quarkly/atomize';
-import { useTabs } from './Tabs';
+import { useTabs, getCorrectChildren } from './Tabs';
 
 const TabPanels = ({ ...props
 }) => {
 	const {
 		currentTabId
 	} = useTabs();
-	const {
-		children
-	} = useOverrides(props, {}); //console.log(props.children)
-	//console.log(children)
-
+	const children = getCorrectChildren(props);
 	let tab = React.Children.map(children, child => {
+		console.log(child.props);
 		return child;
 	});
-	console.log(tab);
 
 	if (tab.length === 0) {
 		tab = 'Set correct tabId!';

@@ -23,20 +23,19 @@ const TabList = ({
 			target,
 			key
 		} = e;
-		console.log(key);
 
 		if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(key)) {
 			return;
 		}
 
 		e.preventDefault();
+		const htmlChildren = ref.current.children;
 		const nextElement = {
-			ArrowLeft: target.previousElementSibling || ref.current.lastChild,
-			ArrowRight: target.nextElementSibling || ref.current.firstChild,
-			Home: ref.current.firstChild,
-			End: ref.current.lastChild
+			ArrowLeft: target.previousElementSibling || htmlChildren[htmlChildren.length - 1],
+			ArrowRight: target.nextElementSibling || htmlChildren[0],
+			Home: htmlChildren[0],
+			End: htmlChildren[htmlChildren.length - 1]
 		}[key];
-		console.log(nextElement);
 		if (!nextElement) return;
 		nextElement.focus();
 		nextElement.click();

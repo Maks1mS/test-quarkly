@@ -12,6 +12,10 @@ const TabPanel = ({
 };
 
 export default atomize(TabPanel)({
-	name: 'Tab',
-	description: {}
+	name: 'TabPanel',
+	propInfo: {
+		tabId: {
+			control: 'input'
+		}
+	}
 });

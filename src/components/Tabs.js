@@ -7,6 +7,9 @@ const TabsContext = createContext({
 	align: 'start'
 });
 export const useTabs = () => useContext(TabsContext);
+export const getCorrectChildren = ({
+	children
+}) => React.Children.toArray(children).filter(c => c.key !== '.$placeholder');
 
 const Tabs = ({
 	defaultTab,

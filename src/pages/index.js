@@ -111,9 +111,15 @@ export default (() => {
 					</Components.Tab>
 				</Components.TabList>
 				<Components.TabPanels>
-					<Components.TabPanel tabId="one" />
-					<Components.TabPanel tabId="two" />
-					<Components.TabPanel tabId="three" />
+					<Components.TabPanel tabId="one">
+						Tab one
+					</Components.TabPanel>
+					<Components.TabPanel tabId="two">
+						Tab two
+					</Components.TabPanel>
+					<Components.TabPanel tabId="three">
+						Tab three
+					</Components.TabPanel>
 				</Components.TabPanels>
 			</Components.Tabs>
 			<Stack>

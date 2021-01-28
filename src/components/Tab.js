@@ -45,5 +45,9 @@ const Tab = ({
 
 export default atomize(Tab)({
 	name: 'Tab',
-	description: {}
+	propInfo: {
+		tabId: {
+			control: 'input'
+		}
+	}
 });
