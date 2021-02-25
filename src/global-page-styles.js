@@ -4,11 +4,7 @@ import { createGlobalStyle } from "styled-components";
 
 const pageStyles = {
     "404": {},
-    "index": {},
-    "vkcomments1": {},
-    "test": {},
-    "map": {},
-    "mapbug": {}
+    "index": {}
 };
 
 const PageStyles = createGlobalStyle`
