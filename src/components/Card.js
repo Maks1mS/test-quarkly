@@ -8,7 +8,7 @@ const overrides = {
 	'Card Title': {
 		kind: 'Text',
 		props: {
-			children: 'Card title'
+			"children": "Card titl"
 		}
 	},
 	'Card Text': {
@@ -108,7 +108,7 @@ const mainOverrides = {
 	}
 };
 
-const parseAspectRatio = aspectRatio => {
+const canvasProps = aspectRatio => {
 	const aspect = {
 		square: '1:1',
 		circle: '1:1'
@@ -128,12 +128,13 @@ const aspectProps = (aspectRatio, displayMode) => {
 		};
 	}
 
-	const {
-		height,
-		width
-	} = parseAspectRatio(aspectRatio);
 	return {
-		pb: height / width * 100 + '%'
+		pb: {
+			square: 100,
+			circle: 100,
+			'4:3': 4 / 3 * 100,
+			'3:4': 3 / 4 * 100
+		}[aspectRatio] + '%'
 	};
 };
 
@@ -155,9 +156,9 @@ const AspectRatioWrapper = ({
 		miw="0"
 		{...aspectProps(aspectRatio, displayMode)}
 	>
-		      
-		{displayMode === 'Horizontal' && <Canvas {...parseAspectRatio(aspectRatio)} h="100%" d="block" />}
-		      
+		    
+		{displayMode === 'Horizontal' && <Canvas {...canvasProps(aspectRatio)} h="100%" d="block" />}
+		    
 		<Box
 			ov="auto"
 			pos="absolute"
@@ -166,11 +167,11 @@ const AspectRatioWrapper = ({
 			b="0"
 			l="0"
 		>
-			        
-			{children}
 			      
+			{children}
+			    
 		</Box>
-		    
+		  
 	</Box>;
 };
 
@@ -213,21 +214,23 @@ const Card = ({
 			<ImageComponent bdrs={bdrs} {...override(overrideName)} />
 			        
 		</AspectRatioWrapper>}
-		      
-		<Box p="10px" m="auto" bxsz="border-box" {...override(`Card Content ${displayMode}`)}>
-			        
-			{showTitle && <Text fz="20pt" {...override('Card Title')} />}
-			        
-			{showText && <Text {...override('Card Text')} />}
-			        
-			{showButton && <Button w="100%" {...override('Card Button')} />}
-			        
-			<Box>
-				{children}
-			</Box>
-			      
-		</Box>
 		    
+		<Box p="10px" m="auto" bxsz="border-box" {...override(`Card Content ${displayMode}`)}>
+			      
+			{showTitle && <Text fz="20pt" {...override('Card Title')} />}
+			      
+			{showText && <Text {...override('Card Text')} />}
+			      
+			{showButton && <Button w="100%" {...override('Card Button')} />}
+			      
+			<Box>
+				        
+				{children}
+				      
+			</Box>
+			    
+		</Box>
+		  
 	</Box>;
 };
 
