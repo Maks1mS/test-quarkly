@@ -22,6 +22,7 @@ export default (() => {
 		<Components.FacebookComment />
 		<Components.FacebookComments />
 		<Components.VkComments />
+		<Components.Tooltip />
 		<Link
 			font={"--capture"}
 			font-size={"10px"}
