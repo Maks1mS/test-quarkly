@@ -15,13 +15,17 @@ export default (() => {
 			<meta name={"description"} content={"Web site created using quarkly.io"} />
 			<link rel={"shortcut icon"} href={"https://uploads.quarkly.io/readme/cra/favicon-32x32.ico"} type={"image/x-icon"} />
 		</Helmet>
-		<Components.CookieUsed variant="Vertical" left="0px" right="43px">
-			<Override slot="Text" />
+		<Components.CookieUsed variant="Horizontal" left="0px" right="43px">
+			<Override slot="Text">
+				We use cookies to improve your experience on our site. By using our site, you consent to out use of cookies.
+			</Override>
 			<Override slot="Button">
 				Accept
 			</Override>
 		</Components.CookieUsed>
-		<Box height="500vh" />
+		<Box height="500vh">
+			<Components.ResetCookie />
+		</Box>
 		<Link
 			font={"--capture"}
 			font-size={"10px"}

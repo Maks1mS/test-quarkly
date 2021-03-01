@@ -1,5 +1,6 @@
 export { default as ScrollToTop } from "./ScrollToTop"
 export { default as CookieUsed } from "./CookieUsed"
+export { default as ResetCookie } from "./ResetCookie"
 export { default as FacebookLike } from "./FacebookLike"
 export { default as YandexMap } from "./YandexMap"
 export { default as MyFormspree } from "./MyFormspree"

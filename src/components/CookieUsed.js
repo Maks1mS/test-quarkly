@@ -20,6 +20,7 @@ const overrides = {
 	Text: {
 		kind: 'Text',
 		props: {
+			// Мы используем cookies для того, чтобы обеспечить наилучшую работу нашего сайта. Продолжая использовать наш сайт, Вы соглашаетесь с использованием cookie-файлов.
 			children: 'We use cookies to improve your experience on our site. By using our site, you consent to out use of cookies.'
 		}
 	},
