@@ -1,6 +1,6 @@
 import React from "react";
 import theme from "theme";
-import { Theme, Link } from "@quarkly/widgets";
+import { Theme, Link, Box } from "@quarkly/widgets";
 import { Helmet } from "react-helmet";
 import { GlobalQuarklyPageStyles } from "global-page-styles";
 import * as Components from "components";
@@ -23,6 +23,20 @@ export default (() => {
 		<Components.FacebookComments />
 		<Components.VkComments />
 		<Components.Tooltip />
+		<Components.Form />
+		<Components.Form>
+			<Components.FormInput />
+			<Components.FacebookLike />
+			<Components.FormLabel />
+			<Components.VkComments />
+			<Components.VkPage />
+			<Components.FacebookLike />
+		</Components.Form>
+		<Components.MyFormspree endpoint="xgepoqev">
+			<Box>
+				<Components.FormTextarea />
+			</Box>
+		</Components.MyFormspree>
 		<Link
 			font={"--capture"}
 			font-size={"10px"}
