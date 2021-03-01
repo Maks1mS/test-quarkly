@@ -37,6 +37,7 @@ export default (() => {
 				<Components.FormTextarea />
 			</Box>
 		</Components.MyFormspree>
+		<Components.VimeoVideo />
 		<Link
 			font={"--capture"}
 			font-size={"10px"}

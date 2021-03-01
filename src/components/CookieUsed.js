@@ -7,29 +7,22 @@ const getAPI = () => (window || global)?.QAPI || {};
 
 const CookieUsed = props => {
 	const [show, setShow] = useState(false);
+	console.log(getAPI().mode);
 
 	const handleClick = () => {
-		if (getAPI().mode === 'development') {
-			return;
-		}
-
 		localStorage.setItem(item, true);
 		setShow(false);
 	};
 
 	useEffect(() => {
-		if (getAPI().mode === 'development') {
-			setShow(true);
-			return;
-		}
-
 		const acceptCookies = localStorage.getItem(item) || false;
 		setShow(!acceptCookies);
 	}, []);
-	return <Box display={show ? 'block' : 'none'} text-align="center" {...props}>
+	return <Box display={show ? 'block' : 'none'} background="--color-primary" {...props}>
 		    
-		<Text margin="0">
-			Hello!
+		<Text>
+			We use cookies to improve your experience on our site.
+    By using our site, you consent to out use of cookies.
 		</Text>
 		    
 		<Button onClick={handleClick}>
