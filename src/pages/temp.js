@@ -21,7 +21,7 @@ export default (() => {
 		<Components.Card />
 		<Components.FacebookComment />
 		<Components.FacebookComments />
-		<Components.VkComments />
+		<Components.VkComments attachLink pageId="100" />
 		<Components.Tooltip />
 		<Components.Form />
 		<Components.Form>

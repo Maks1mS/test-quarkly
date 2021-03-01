@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import atomize from '@quarkly/atomize';
 import { Box, Text } from '@quarkly/widgets';
 import { useTheme } from "styled-components";
@@ -24,16 +24,19 @@ const modeConverter = {
 	'News': 4
 };
 
-const useColor = theme => (rawColor, defaultColor) => useMemo(() => {
-	let color = rawColor;
+const useColor = (rawColor, defaultColor) => {
+	const theme = useTheme();
+	return useMemo(() => {
+		let color = rawColor;
 
-	if (isCssVar(rawColor)) {
-		color = theme.color[rawColor.substring(2)];
-	} // return parse(color)?.hex?.substring(1) || defaultColor
+		if (isCssVar(rawColor)) {
+			color = theme.color[rawColor.substring(2)];
+		} // return parse(color)?.hex?.substring(1) || defaultColor
 
 
-	return hexColor.test(color) ? color.substring(1) : defaultColor;
-}, [theme, rawColor, defaultColor]);
+		return hexColor.test(color) ? color.substring(1) : defaultColor;
+	}, [theme, rawColor, defaultColor]);
+};
 
 const Page = ({
 	background,
@@ -49,11 +52,9 @@ const Page = ({
 	wide,
 	...props
 }) => {
-	const theme = useTheme();
-	const getColor = useColor(theme);
-	const color1 = getColor(bgc, 'FFF');
-	const color2 = getColor(color, '000');
-	const color3 = getColor(buttonColor, '5181B8');
+	const color1 = useColor(bgc, 'FFF');
+	const color2 = useColor(color, '000');
+	const color3 = useColor(buttonColor, '5181B8');
 	const mode = modeConverter[viewMode];
 	const dOpt = useDebounce({
 		height,
