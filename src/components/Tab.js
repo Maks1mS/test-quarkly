@@ -1,53 +1,41 @@
 import React from 'react';
 import atomize from '@quarkly/atomize';
-import { Button } from '@quarkly/widgets';
-import { useTabs } from './Tabs';
-
-const Tab = ({
-	children,
-	tabId,
-	...props
-}) => {
-	const {
-		setTabId,
-		currentTabId,
-		align
-	} = useTabs();
-	const active = currentTabId === tabId;
-
-	const onClick = () => {
-		setTabId(tabId);
-	};
-
-	return <Button
-		role="tab"
-		tabIndex="-1"
-		aria-selected={active}
-		color="black"
-		background="none"
-		border-radius="0"
-		onClick={onClick}
-		{...align === 'full width' && {
-			width: '100%'
-		}}
-		{...active && {
-			'border-bottom': 'solid 2px black',
-			'margin-bottom': '-2px',
-			tabIndex: 0
-		}}
-		{...props}
-	>
-		    
-		{children}
-		  
-	</Button>;
-};
-
-export default atomize(Tab)({
-	name: 'Tab',
-	propInfo: {
-		tabId: {
-			control: 'input'
+import { Box, Text, Button, Image, Icon } from '@quarkly/widgets';
+import { useOverrides } from '@quarkly/components';
+const defaultImage = 'https://images.unsplash.com/photo-1606246082577-2329910ef82c?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0MjIzN30&h=2000';
+const overrides = {
+	'name': {
+		kind: 'Button',
+		props: {
+			children: 'Card title'
 		}
 	}
-});
+};
+
+const Tab = ({ ...props
+}) => {
+	const {
+		override,
+		children,
+		rest
+	} = useOverrides(props, overrides);
+	return <Box {...props}>
+		<Button {...override('name')} />
+	</Box>;
+};
+
+const propInfo = {};
+const defaultProps = {};
+export default atomize(Tab)({
+	name: 'Card',
+	effects: {
+		hover: ':hover'
+	},
+	overrides,
+	normalize: true,
+	mixins: true,
+	description: {
+		en: 'Cards contain content and actions about a single subject.'
+	},
+	propInfo
+}, defaultProps);

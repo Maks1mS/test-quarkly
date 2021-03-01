@@ -23,6 +23,18 @@ export default (() => {
 		<Components.FacebookComments />
 		<Components.VkComments attachLink pageId="100" />
 		<Components.Tooltip />
+		<Components.TabList>
+			<Components.Tab />
+			<Components.Tab />
+			<Components.Tab />
+		</Components.TabList>
+		<Components.Tabs>
+			<Components.TabPanels>
+				<Components.TabPanel key="24ф" />
+				<Components.TabPanel key="1" />
+				<Components.TabPanel key="34" />
+			</Components.TabPanels>
+		</Components.Tabs>
 		<Components.Form />
 		<Components.Form>
 			<Components.FormInput />

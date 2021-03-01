@@ -9,9 +9,10 @@ const TabPanels = ({ ...props
 	const {
 		currentTabId
 	} = useTabs();
-	const children = getCorrectChildren(props);
+	const children = getCorrectChildren(props); //console.log(props);
+
 	let tab = React.Children.map(children, child => {
-		console.log(child.props);
+		console.log(child);
 		return child;
 	});
 
@@ -25,6 +26,5 @@ const TabPanels = ({ ...props
 };
 
 export default atomize(TabPanels)({
-	name: 'Tab',
-	description: {}
+	name: 'Tab'
 });
