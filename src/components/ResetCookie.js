@@ -4,7 +4,7 @@ import { Button } from '@quarkly/widgets';
 
 const ResetCookie = props => <Button onClick={() => {
 	localStorage.removeItem('accept_cookies');
-	Location.reload();
+	window.location.reload();
 }}>
 	  Сбросить
 </Button>;
