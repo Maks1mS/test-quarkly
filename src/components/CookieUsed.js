@@ -4,7 +4,17 @@ import { Box, Button, Text } from '@quarkly/widgets';
 import { useOverrides } from '@quarkly/components';
 const item = 'accept_cookies';
 
-const getAPI = () => (global || window)?.QAPI || {};
+const getAPI = () => {
+	if (typeof window !== "undefined") {
+		return window.QAPI || {};
+	}
+
+	if (typeof global !== "undefined") {
+		return global.QAPI || {};
+	}
+
+	return {};
+};
 
 const overrides = {
 	Text: {
@@ -33,19 +43,18 @@ const CookieUsed = ({
 	} = useOverrides(props, overrides);
 
 	const handleClick = () => {
-		localStorage.setItem(item, true);
 		if (getAPI().mode === 'development') return;
+		localStorage.setItem(item, true);
 		setShow(false);
 	};
 
 	useEffect(() => {
-		const acceptCookies = localStorage.getItem(item) || false;
-
 		if (getAPI().mode === 'development') {
 			setShow(true);
 			return;
 		}
 
+		const acceptCookies = localStorage.getItem(item) || false;
 		setShow(!acceptCookies);
 	}, []);
 	return <Box
@@ -57,13 +66,19 @@ const CookieUsed = ({
 		justify-content="center"
 		align-items="center"
 		background="--color-primary"
-		padding="10px"
+		padding="10px 0"
 		{...rest}
 	>
 		    
 		<Text color="--color-light" vertical-align="middle" {...override('Text')} />
 		    
-		<Button color="--color-primary" background="--color-light" onClick={handleClick} {...override('Button')} />
+		<Button
+			margin-left={variant === 'Horizontal' && '10px'}
+			color="--color-primary"
+			background="--color-light"
+			onClick={handleClick}
+			{...override('Button')}
+		/>
 		  
 	</Box>;
 };
