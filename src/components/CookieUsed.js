@@ -36,7 +36,8 @@ const CookieUsed = ({
 	variant,
 	...props
 }) => {
-	const [show, setShow] = useState(false);
+	const isDev = getAPI().mode === 'development';
+	const [show, setShow] = useState(localStorage.getItem(item) || isDev);
 	const {
 		override,
 		children,
@@ -44,20 +45,11 @@ const CookieUsed = ({
 	} = useOverrides(props, overrides);
 
 	const handleClick = () => {
-		if (getAPI().mode === 'development') return;
+		if (isDev) return;
 		localStorage.setItem(item, true);
 		setShow(false);
 	};
 
-	useEffect(() => {
-		if (getAPI().mode === 'development') {
-			setShow(true);
-			return;
-		}
-
-		const acceptCookies = localStorage.getItem(item) || false;
-		setShow(!acceptCookies);
-	}, []);
 	return <Box
 		position="fixed"
 		width="100%"

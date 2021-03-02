@@ -3,7 +3,6 @@ import theme from "theme";
 import { Theme, Link, Box } from "@quarkly/widgets";
 import { Helmet } from "react-helmet";
 import { GlobalQuarklyPageStyles } from "global-page-styles";
-import { Override } from "@quarkly/components";
 import * as Components from "components";
 export default (() => {
 	return <Theme theme={theme}>
@@ -15,15 +14,8 @@ export default (() => {
 			<meta name={"description"} content={"Web site created using quarkly.io"} />
 			<link rel={"shortcut icon"} href={"https://uploads.quarkly.io/readme/cra/favicon-32x32.ico"} type={"image/x-icon"} />
 		</Helmet>
-		<Components.CookieUsed variant="Horizontal" left="0px" right="43px">
-			<Override slot="Text">
-				We use cookies to improve your experience on our site. By using our site, you consent to out use of cookies.
-			</Override>
-			<Override slot="Button">
-				Accept
-			</Override>
-		</Components.CookieUsed>
-		<Box height="500vh">
+		<Components.CookieUsed variant="Horizontal" left="0px" right="43px" />
+		<Box height="200vh">
 			<Components.ResetCookie />
 		</Box>
 		<Link
