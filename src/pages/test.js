@@ -1,9 +1,8 @@
 import React from "react";
 import theme from "theme";
-import { Theme, Link, Box } from "@quarkly/widgets";
+import { Theme, Link } from "@quarkly/widgets";
 import { Helmet } from "react-helmet";
 import { GlobalQuarklyPageStyles } from "global-page-styles";
-import { StackItem, Stack } from "@quarkly/components";
 import * as Components from "components";
 export default (() => {
 	return <Theme theme={theme}>
@@ -15,33 +14,7 @@ export default (() => {
 			<meta name={"description"} content={"Web site created using quarkly.io"} />
 			<link rel={"shortcut icon"} href={"https://uploads.quarkly.io/readme/cra/favicon-32x32.ico"} type={"image/x-icon"} />
 		</Helmet>
-		<Stack>
-			{"    "}
-			<StackItem width="50%" display="flex">
-				{"        "}
-				<Components.VimeoVideo />
-				{"    "}
-			</StackItem>
-			{"    "}
-			<StackItem width="50%" display="flex">
-				{"        "}
-				<Components.Form />
-				<Components.Form>
-					<Components.FormInput />
-					<Components.FacebookLike />
-					<Components.FormLabel />
-					<Components.VkComments />
-					<Components.VkPage />
-					<Components.FacebookLike />
-				</Components.Form>
-				{"    "}
-			</StackItem>
-		</Stack>
-		<Components.MyFormspree endpoint="xgepoqev">
-			<Box>
-				<Components.FormTextarea />
-			</Box>
-		</Components.MyFormspree>
+		<Components.BeforeAfterImage aspectRatio="16:9" activationType="onDrag" />
 		<Link
 			font={"--capture"}
 			font-size={"10px"}

@@ -8,7 +8,7 @@ const overrides = {
 	'Card Title': {
 		kind: 'Text',
 		props: {
-			"children": "Card titl"
+			"children": "Card title"
 		}
 	},
 	'Card Text': {
